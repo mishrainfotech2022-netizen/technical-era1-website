@@ -5,6 +5,6 @@
   3. For production, restrict the key to your website domain and YouTube Data API v3.
 */
 window.TECHNICAL_ERA1_CONFIG = {
-  youtubeApiKey: "PASTE_YOUTUBE_DATA_API_KEY_HERE",
+  youtubeApiKey: "AIzaSyCbZODPiELLae5-MgubshN0WSWwwBDElSc",
   channelHandle: "technicalskiil"
 };
