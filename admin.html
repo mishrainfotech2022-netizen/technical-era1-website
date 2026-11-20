@@ -9,8 +9,8 @@
 <section class="panel"><h2>Existing projects</h2><button class="btn secondary" id="refresh">Refresh list</button><div id="projectList">Loading…</div></section></section></main>
 <script>
 // Supabase Dashboard > Project Settings > API. Use only Project URL + anon/public key.
-const SUPABASE_URL="PASTE_YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY="PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY";
+const SUPABASE_URL="https://dcvsvbfcxplbgbezilyh.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY="sb_publishable_XTOQVpFtj56oska8CJpv3g_fiHZD2HN";
 const ADMIN_EMAIL="mishrainfotech2022@gmail.com";
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY),$=id=>document.getElementById(id);
 function msg(id,t){$(id).textContent=t;$(id).classList.remove('hidden')}function clear(id){$(id).textContent='';$(id).classList.add('hidden')}
