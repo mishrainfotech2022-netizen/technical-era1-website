@@ -1,75 +1,353 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050b14" />
-  <meta name="description" content="Technical ERA1 — Engineering solutions for a better tomorrow. Explore school projects, B.Tech projects, customised projects, industrial automation and step-by-step tutorials." />
+  <meta name="description" content="Technical ERA1 — Engineering solutions for a better tomorrow. Explore school projects, B.Tech projects, customised projects, industrial automation and tutorials." />
   <title>Technical ERA1 | Engineering Solutions for a Better Tomorrow</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .published-projects {
+      padding-top: 75px;
+      padding-bottom: 85px;
+    }
+
+    .published-project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .published-project-card {
+      background: #081321;
+      border: 1px solid rgba(0,185,244,.2);
+      overflow: hidden;
+      transition: .2s;
+    }
+
+    .published-project-card:hover {
+      border-color: #00b9f4;
+      transform: translateY(-3px);
+    }
+
+    .published-project-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #03070c;
+    }
+
+    .published-project-placeholder {
+      aspect-ratio: 16/9;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg,#0b1c2e,#07101b);
+      font: 800 44px 'Barlow Condensed', sans-serif;
+      color: #00b9f4;
+    }
+
+    .published-project-placeholder span {
+      color: #ff9d00;
+    }
+
+    .published-project-body {
+      padding: 18px;
+    }
+
+    .published-project-category {
+      font-size: 9px;
+      color: #ff9d00;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .published-project-body h3 {
+      font: 600 23px/1.05 'Barlow Condensed', sans-serif;
+      margin: 9px 0;
+    }
+
+    .published-project-body p {
+      font-size: 11px;
+      line-height: 1.7;
+      color: #9aaabd;
+    }
+
+    .published-project-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #00b9f4;
+      font-size: 10px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .project-loading {
+      grid-column: 1/-1;
+      padding: 35px;
+      text-align: center;
+      border: 1px dashed rgba(0,185,244,.3);
+      color: #9aaabd;
+      font-size: 12px;
+    }
+
+    @media(max-width:900px) {
+      .published-project-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:680px) {
+      .published-project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="top-glow"></div>
+
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Technical ERA1 home">
       <img src="assets/technical-era1-logo.png" alt="Technical ERA1 emblem" />
-      <span><b>TECHNICAL <i>ERA1</i></b><small>ENGINEERING SOLUTIONS FOR A BETTER TOMORROW</small></span>
+      <span>
+        <b>TECHNICAL <i>ERA1</i></b>
+        <small>ENGINEERING SOLUTIONS FOR A BETTER TOMORROW</small>
+      </span>
     </a>
+
     <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
     <nav id="mainNav">
-      <a href="#home">Home</a><a href="#services">What We Do</a><a href="#videos">Videos</a><a href="#projects">Projects</a><a href="#about">About</a>
+      <a href="#home">Home</a>
+      <a href="#services">What We Do</a>
+      <a href="#videos">Videos</a>
+      <a href="#publishedProjects">Projects</a>
+      <a href="#about">About</a>
       <a class="nav-cta" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Subscribe <span>↗</span></a>
     </nav>
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero section-wrap" id="home">
       <div class="hero-copy">
         <div class="eyebrow"><span class="pulse"></span> INNOVATE · CREATE · AUTOMATE</div>
+
         <h1>TURN YOUR<br><em>IDEAS</em> INTO<br><span>REALITY.</span></h1>
+
         <p class="hero-lead">Engineering solutions for a better tomorrow.</p>
-        <p class="hero-desc">Explore practical engineering, electronics, robotics and automation projects — explained through hands-on tutorials and real-world builds.</p>
-        <div class="hero-actions"><a class="btn btn-primary" href="#videos">Explore Tutorials <b>→</b></a><a class="btn btn-outline" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Visit YouTube <b>↗</b></a></div>
-        <div class="hero-points"><span>⚡ Practical Learning</span><span>⌁ Step-by-Step Guidance</span><span>◈ Build & Innovate</span></div>
+
+        <p class="hero-desc">
+          Explore practical engineering, electronics, robotics and automation projects — explained through hands-on tutorials and real-world builds.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#videos">Explore Tutorials <b>→</b></a>
+          <a class="btn btn-outline" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Visit YouTube <b>↗</b></a>
+        </div>
+
+        <div class="hero-points">
+          <span>⚡ Practical Learning</span>
+          <span>⌁ Step-by-Step Guidance</span>
+          <span>◈ Build & Innovate</span>
+        </div>
       </div>
+
       <div class="hero-art">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="hero-logo-frame"><img src="assets/technical-era1-logo.png" alt="Technical ERA1 logo" /></div>
-        <div class="floating-chip chip-top">ESP32 · ARDUINO</div><div class="floating-chip chip-bottom">ENGINEERING / INNOVATION</div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="hero-logo-frame">
+          <img src="assets/technical-era1-logo.png" alt="Technical ERA1 logo" />
+        </div>
+        <div class="floating-chip chip-top">ESP32 · ARDUINO</div>
+        <div class="floating-chip chip-bottom">ENGINEERING / INNOVATION</div>
         <div class="circuit-lines"></div>
       </div>
-      <div class="hero-bottom-line"><span></span> QUALITY PROJECTS <b>•</b> PROFESSIONAL SUPPORT <b>•</b> ON-TIME DELIVERY <span></span></div>
-    </section>
 
-    <section class="services section-wrap" id="services">
-      <div class="section-heading"><div><div class="eyebrow">WHAT WE DO</div><h2>IDEAS TO <em>IMPLEMENTATION</em></h2></div><p>From classroom concepts to industrial solutions, explore technology that you can understand, build and apply.</p></div>
-      <div class="service-grid">
-        <article class="service-card"><div class="service-icon">⌂</div><div class="card-kicker">01 / LEARN</div><h3>School Projects</h3><p>Creative and innovative working models that make learning exciting.</p><a href="#videos">Explore tutorials <b>↗</b></a></article>
-        <article class="service-card featured"><div class="service-icon">⌬</div><div class="card-kicker">02 / ENGINEER</div><h3>B.Tech Projects</h3><p>From concept to creation with practical engineering applications.</p><a href="#videos">Explore tutorials <b>↗</b></a></article>
-        <article class="service-card"><div class="service-icon">⚙</div><div class="card-kicker">03 / CUSTOMISE</div><h3>Customised Projects</h3><p>Project development tailored to your requirements and ideas.</p><a href="#contact">Discuss a project <b>↗</b></a></article>
-        <article class="service-card"><div class="service-icon">▦</div><div class="card-kicker">04 / AUTOMATE</div><h3>Industrial Projects</h3><p>Automation and engineering solutions for real-world challenges.</p><a href="#contact">Discuss a project <b>↗</b></a></article>
+      <div class="hero-bottom-line">
+        <span></span> QUALITY PROJECTS <b>•</b> PROFESSIONAL SUPPORT <b>•</b> ON-TIME DELIVERY <span></span>
       </div>
     </section>
 
-    <section class="videos-section" id="videos"><div class="section-wrap">
-      <div class="section-heading"><div><div class="eyebrow">WATCH · LEARN · BUILD</div><h2>FROM OUR <em>YOUTUBE CHANNEL</em></h2></div><a class="text-link" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">View channel ↗</a></div>
-      <div class="video-toolbar"><div class="video-status"><span class="status-dot"></span><span id="videoStatus">Connect your YouTube API key to load latest uploads.</span></div><input id="videoSearch" type="search" placeholder="Search tutorials..." aria-label="Search videos" /></div>
-      <div class="video-grid" id="videoGrid"><div class="video-placeholder"><div class="play-icon">▶</div><h3>Your latest tutorials will appear here</h3><p>Add your YouTube Data API key in <code>config.js</code> to automatically load video thumbnails, titles and descriptions.</p><a class="btn btn-outline" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Watch on YouTube ↗</a></div></div>
-      <div class="center-action"><a class="btn btn-primary" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Explore all videos <b>↗</b></a></div>
-    </div></section>
+    <!-- SERVICES -->
+    <section class="services section-wrap" id="services">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">WHAT WE DO</div>
+          <h2>IDEAS TO <em>IMPLEMENTATION</em></h2>
+        </div>
+        <p>From classroom concepts to industrial solutions, explore technology that you can understand, build and apply.</p>
+      </div>
 
-    <section class="project-band section-wrap" id="projects"><div class="project-band-copy"><div class="eyebrow">MAKE SOMETHING AMAZING</div><h2>YOUR NEXT PROJECT<br>STARTS <em>HERE.</em></h2><p>Discover tutorials, explore components and turn your next engineering idea into a working project.</p><a class="btn btn-primary" href="#videos">Start Learning <b>→</b></a></div><div class="project-visual"><div class="hex hex-a">⚡</div><div class="hex hex-b">⌘</div><div class="hex hex-c">⚙</div><div class="project-orbit"></div><div class="project-core">ERA<span>1</span></div></div></section>
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">⌂</div>
+          <div class="card-kicker">01 / LEARN</div>
+          <h3>School Projects</h3>
+          <p>Creative and innovative working models that make learning exciting.</p>
+          <a href="#publishedProjects">Explore projects <b>↗</b></a>
+        </article>
 
-    <section class="about-section section-wrap" id="about"><div class="about-mark">ERA<span>1</span></div><div><div class="eyebrow">ABOUT TECHNICAL ERA1</div><h2>INNOVATE. CREATE. <em>AUTOMATE.</em></h2><p>Technical ERA1 is focused on engineering projects, practical tutorials and innovative solutions. Learn by doing, explore new ideas and bring concepts to life.</p><div class="about-tags"><span>Electronics</span><span>Robotics</span><span>IoT</span><span>Automation</span><span>Engineering</span></div></div></section>
+        <article class="service-card featured">
+          <div class="service-icon">⌬</div>
+          <div class="card-kicker">02 / ENGINEER</div>
+          <h3>B.Tech Projects</h3>
+          <p>From concept to creation with practical engineering applications.</p>
+          <a href="#publishedProjects">Explore projects <b>↗</b></a>
+        </article>
 
-    <section class="contact-strip section-wrap" id="contact"><div><div class="eyebrow">HAVE A PROJECT IDEA?</div><h2>LET'S BUILD SOMETHING <em>AMAZING.</em></h2><p>Call or WhatsApp Technical ERA1 on <strong>7310100077</strong> to discuss a school, B.Tech, customised or industrial project.</p></div><div class="contact-actions"><a class="btn btn-outline" href="tel:+917310100077">Call: 7310100077 <b>↗</b></a><a class="btn btn-primary" href="https://wa.me/917310100077" target="_blank" rel="noreferrer">WhatsApp: 7310100077 <b>↗</b></a></div></section>
+        <article class="service-card">
+          <div class="service-icon">⚙</div>
+          <div class="card-kicker">03 / CUSTOMISE</div>
+          <h3>Customised Projects</h3>
+          <p>Project development tailored to your requirements and ideas.</p>
+          <a href="#contact">Discuss a project <b>↗</b></a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">▦</div>
+          <div class="card-kicker">04 / AUTOMATE</div>
+          <h3>Industrial Projects</h3>
+          <p>Automation and engineering solutions for real-world challenges.</p>
+          <a href="#contact">Discuss a project <b>↗</b></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- YOUTUBE VIDEOS -->
+    <section class="videos-section" id="videos">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">WATCH · LEARN · BUILD</div>
+            <h2>FROM OUR <em>YOUTUBE CHANNEL</em></h2>
+          </div>
+          <a class="text-link" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">View channel ↗</a>
+        </div>
+
+        <div class="video-toolbar">
+          <div class="video-status">
+            <span class="status-dot"></span>
+            <span id="videoStatus">Loading YouTube videos...</span>
+          </div>
+          <input id="videoSearch" type="search" placeholder="Search tutorials..." aria-label="Search videos" />
+        </div>
+
+        <div class="video-grid" id="videoGrid">
+          <div class="video-placeholder">
+            <div class="play-icon">▶</div>
+            <h3>Your latest tutorials will appear here</h3>
+            <p>Loading videos from Technical ERA1 YouTube channel.</p>
+            <a class="btn btn-outline" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Watch on YouTube ↗</a>
+          </div>
+        </div>
+
+        <div class="center-action">
+          <a class="btn btn-primary" href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">Explore all videos <b>↗</b></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS FROM SUPABASE -->
+    <section class="published-projects section-wrap" id="publishedProjects">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">EXPLORE OUR WORK</div>
+          <h2>FEATURED <em>PROJECTS</em></h2>
+        </div>
+        <p>Browse projects published by Technical ERA1. Select a project video to watch directly on YouTube.</p>
+      </div>
+
+      <div id="publishedProjectGrid" class="published-project-grid">
+        <div class="project-loading">Loading published projects...</div>
+      </div>
+    </section>
+
+    <!-- PROJECT BANNER -->
+    <section class="project-band section-wrap" id="projects">
+      <div class="project-band-copy">
+        <div class="eyebrow">MAKE SOMETHING AMAZING</div>
+        <h2>YOUR NEXT PROJECT<br>STARTS <em>HERE.</em></h2>
+        <p>Discover tutorials, explore components and turn your next engineering idea into a working project.</p>
+        <a class="btn btn-primary" href="#publishedProjects">Explore Projects <b>→</b></a>
+      </div>
+
+      <div class="project-visual">
+        <div class="hex hex-a">⚡</div>
+        <div class="hex hex-b">⌘</div>
+        <div class="hex hex-c">⚙</div>
+        <div class="project-orbit"></div>
+        <div class="project-core">ERA<span>1</span></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-section section-wrap" id="about">
+      <div class="about-mark">ERA<span>1</span></div>
+      <div>
+        <div class="eyebrow">ABOUT TECHNICAL ERA1</div>
+        <h2>INNOVATE. CREATE. <em>AUTOMATE.</em></h2>
+        <p>Technical ERA1 is focused on engineering projects, practical tutorials and innovative solutions. Learn by doing, explore new ideas and bring concepts to life.</p>
+        <div class="about-tags">
+          <span>Electronics</span>
+          <span>Robotics</span>
+          <span>IoT</span>
+          <span>Automation</span>
+          <span>Engineering</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-strip section-wrap" id="contact">
+      <div>
+        <div class="eyebrow">HAVE A PROJECT IDEA?</div>
+        <h2>LET'S BUILD SOMETHING <em>AMAZING.</em></h2>
+        <p>Call or WhatsApp Technical ERA1 on <strong>7310100077</strong> to discuss a school, B.Tech, customised or industrial project.</p>
+      </div>
+
+      <div class="contact-actions">
+        <a class="btn btn-outline" href="tel:+917310100077">Call: 7310100077 <b>↗</b></a>
+        <a class="btn btn-primary" href="https://wa.me/917310100077" target="_blank" rel="noreferrer">WhatsApp: 7310100077 <b>↗</b></a>
+      </div>
+    </section>
+
   </main>
 
-  <footer><div class="footer-brand">TECHNICAL <em>ERA1</em></div><p>Engineering Solutions for a Better Tomorrow</p><div class="footer-links"><a href="#home">Home</a><a href="#videos">Videos</a><a href="#projects">Projects</a><a href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">YouTube ↗</a></div><small>© <span id="year"></span> Technical ERA1. All rights reserved.</small></footer>
-  <div class="modal" id="videoModal" aria-hidden="true"><button class="modal-close" id="modalClose" aria-label="Close video">×</button><div class="modal-inner" id="modalInner"></div></div>
-  <script src="config.js"></script><script src="app.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">TECHNICAL <em>ERA1</em></div>
+    <p>Engineering Solutions for a Better Tomorrow</p>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#videos">Videos</a>
+      <a href="#publishedProjects">Projects</a>
+      <a href="https://www.youtube.com/@technicalskiil" target="_blank" rel="noreferrer">YouTube ↗</a>
+    </div>
+    <small>© <span id="year"></span> Technical ERA1. All rights reserved.</small>
+  </footer>
+
+  <!-- VIDEO MODAL -->
+  <div class="modal" id="videoModal" aria-hidden="true">
+    <button class="modal-close" id="modalClose" aria-label="Close video">×</button>
+    <div class="modal-inner" id="modalInner"></div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
 </body>
 </html>
